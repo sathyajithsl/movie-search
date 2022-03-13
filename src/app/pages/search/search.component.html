@@ -1,0 +1,49 @@
+<div class="col-lg-12 text-center mt-5">
+  <h1>Movie Search</h1>
+</div>
+<div class="col-md-4 offset-md-4 mt-5">
+  <div class="input-group mb-3">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Movie name</mat-label>
+      <input
+        matInput
+        placeholder="Ex. Joker"
+        [(ngModel)]="search"
+        (keydown)="openComp($event)"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Year</mat-label>
+      <mat-select [(value)]="selectedYear">
+        <mat-option *ngFor="let year of years" [value]="year.value">
+          {{ year.view }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      aria-label="cached"
+      (click)="refresh()"
+    >
+      Refresh
+      <mat-icon>cached</mat-icon>
+    </button>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Content Type</mat-label>
+      <mat-select [(value)]="contentType">
+        <mat-option
+          *ngFor="let content of contentTypes"
+          [value]="content.value"
+        >
+          {{ content.view }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="input-group-append">
+      <button mat-raised-button color="primary" (click)="openCompDialog()">
+        Search
+      </button>
+    </div>
+  </div>
+</div>
